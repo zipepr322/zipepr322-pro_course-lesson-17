@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Users</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+	<div class="card">
+	<div class="card__info">
+		<div class="card__info--data">
+			<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/users/jack.svg" class="data__img" alt="Jack" height="50">
+			<div class="user__info">
+				<p>Name: <b>Jack</b></p>
+				<p>Age: <b>13</b></p>
+			</div>
+		</div>
+		<div class="card__info--role">
+			<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/roles/student.svg" alt="student">
+			<span>Student</span>
+		</div>
+	</div>
+	<div class="card__courses">
+		<p class="card__courses--course excellent">Front-end Basic: <span>Excellent</span></p>
+		<p class="card__courses--course verygood">Java: <span>Very Good</span></p>
+		<p class="card__courses--course good">UI/UX: <span>Good</span></p>
+		<p class="card__courses--course satisfactory">OOP: <span>Satisfactory</span></p>
+	</div>
+</div>
+	<div class="card">
+		<div class="card__info">
+			<div class="card__info--data">
+				<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/users/maks.svg" class="data__img" alt="Maks" height="50">
+				<div class="user__info">
+					<p>Name: <b>Maks</b></p>
+					<p>Age: <b>23</b></p>
+				</div>
+			</div>
+			<div class="card__info--role">
+				<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/roles/admin.svg" alt="admin">
+				<span>Admin</span>
+			</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card__info">
+			<div class="card__info--data">
+				<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/users/eva.svg" class="data__img" alt="Eva" height="50">
+				<div class="user__info">
+					<p>Name: <b>Eva</b></p>
+					<p>Age: <b>30</b></p>
+				</div>
+			</div>
+			<div class="card__info--role">
+				<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/roles/moderator.svg" alt="moderator">
+				<span>Moderator</span>
+			</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card__info">
+			<div class="card__info--data">
+				<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/users/lora.svg" class="data__img" alt="Jack" height="50">
+				<div class="user__info">
+					<p>Name: <b>Lora</b></p>
+					<p>Age: <b>13</b></p>
+				</div>
+			</div>
+			<div class="card__info--role">
+				<img src="https://raw.githubusercontent.com/brightestsirius/users/5b470e0fca968b4891881f812ce6e9f04f580859/images/roles/student.svg" alt="student">
+				<span>Student</span>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Скачать и сохранить в локальную папку файлы index.html, users.json и папку styles с https://github.com/brightestsirius/users.
+		// 		Сформировать запрос на получение файла users.json и отрендерить на странице карточку каждого юзера по примеру верстки в index.html.
+
+		let requestUrl ='./users.json',
+			xhr= new XMLHttpRequest();
+		xhr.open('GET',requestUrl);
+		xhr.responseType='json';
+
+		xhr.onload=()=>{
+			if(xhr.status>=400){
+				console.error(xhr.response)
+
+			}
+			else {
+				console.log(xhr.response);
+				let data = xhr.response.users,
+					rating=xhr.response.rating,
+					roles=xhr.response.roles;
+					// console.log(roles);
+				data.forEach((item) => {
+					let satisfactory=item.courses;
+
+						let cartDiv=document.createElement('div'),
+
+								card__infoDiv=document.createElement('div'),
+									card__info_dataDiv=document.createElement('div'),
+										card__info_dataImg=document.createElement('img'),
+										user__infoDiv=document.createElement('div'),
+											user__info_div_p1=document.createElement('p'),
+											user__info_div_p2=document.createElement('p'),
+										card__info_roleDiv=document.createElement('div'),
+											card__info_role_div_img=document.createElement('img'),
+											card__info_role_div_span=document.createElement('span'),
+								card__coursesDiv=document.createElement('div'),
+									front_end_basic_p=document.createElement('p'),
+									java_p=document.createElement('p'),
+									UI_UX_p=document.createElement('p'),
+									OOP_p=document.createElement('p');
+
+
+						cartDiv.classList.add('card');
+							card__infoDiv.classList.add('card__info');
+								card__info_dataDiv.classList.add('card__info--data');
+									card__info_dataImg.classList.add('data__img');
+
+								card__info_roleDiv.classList.add('card__info--role');
+							card__coursesDiv.classList.add('card__courses');
+								front_end_basic_p.classList.add('card__courses--course');
+								// front_end_basic_p.classList.add(classValue);
+								java_p.classList.add('card__courses--course');
+								UI_UX_p.classList.add('card__courses--course');
+								OOP_p.classList.add('card__courses--course');
+
+							/*innerHTML etc*/
+							card__info_dataImg.innerHTML=item.icon;
+								user__info_div_p1.innerHTML=`Name: <b>${item.name}</b>`;
+								user__info_div_p2.innerHTML=`Age: <b>${item.age}</b>`;
+							if(item.position==='admin')card__info_role_div_img.src=roles.admin;
+							if(item.position==='student')card__info_role_div_img.src=roles.student;
+							if(item.position==='moderator')card__info_role_div_img.src=roles.moderator;
+							card__info_role_div_span.innerHTML=item.position;
+							card__info_dataImg.src=item.icon;
+							card__info_dataImg.height=50;
+
+						document.body.append(cartDiv);
+							cartDiv.appendChild(card__infoDiv);
+								card__infoDiv.appendChild((card__info_dataDiv));
+									card__info_dataDiv.appendChild(card__info_dataImg);
+									card__info_dataDiv.appendChild(user__infoDiv);
+										user__infoDiv.appendChild(user__info_div_p1);
+										user__infoDiv.appendChild(user__info_div_p2);
+								card__infoDiv.appendChild(card__info_roleDiv);
+										card__info_roleDiv.appendChild(card__info_role_div_img);
+										card__info_roleDiv.appendChild(card__info_role_div_span);
+
+
+						if(satisfactory){
+							cartDiv.appendChild(card__coursesDiv);
+							card__coursesDiv.classList.add('card__courses');
+							for(i=0;i<satisfactory.length;i++){
+									for (key in satisfactory[i]){
+										if (key==='name'){
+											universal_p=document.createElement('p');
+											universal_span=document.createElement('span');
+											card__coursesDiv.appendChild(universal_p);
+											universal_p.classList.add('card__courses--course');
+											universal_p.innerHTML=`${satisfactory[i][key]}: `;
+										}
+										if (key==='rating'){
+											if(satisfactory[i][key]<15){
+												universal_p.classList.add('satisfactory');
+												universal_p.appendChild(universal_span);
+												universal_span.innerHTML=' Satisfactory'
+											}
+										}
+										if (key==='rating'){
+											if(satisfactory[i][key]>=15 && satisfactory[i][key]<30){
+												universal_p.classList.add('good');
+												universal_p.appendChild(universal_span);
+												universal_span.innerHTML=' Good'
+											}
+										}
+										if (key==='rating'){
+											if(satisfactory[i][key]<80 && satisfactory[i][key]>=30){
+												universal_p.classList.add('verygood');
+												universal_p.appendChild(universal_span);
+												universal_span.innerHTML=' Very good'
+											}
+										}
+										if (key==='rating'){
+											if(satisfactory[i][key]>=80){
+												universal_p.classList.add('excellent');
+												universal_p.appendChild(universal_span);
+												universal_span.innerHTML=' Excellent'
+											}
+										}
+
+								}
+
+							}
+						}
+				})
+			}
+		};
+
+		xhr.onerror=()=>{
+			console.log(xhr.response)
+		};
+		xhr.send();
+
+	</script>
+</body>
+</html>
